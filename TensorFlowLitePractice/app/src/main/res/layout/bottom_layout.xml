@@ -1,63 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_sheet_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
+    android:layout_height="match_parent"
 
     android:background="@color/white"
 
-    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="8dp"
-    app:behavior_hideable="true"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+    app:behavior_hideable="true">
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/gesture_layout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="46dp"-->
-<!--        android:orientation="vertical"-->
-<!--        android:paddingTop="10dp"-->
-<!--        android:paddingBottom="20dp">-->
+    <LinearLayout
+        android:id="@+id/gesture_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/bottom_sheet_bg"
+        android:onClick="returnHome"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        tools:layout_editor_absoluteX="13dp">
 
-<!--        <ImageView-->
-<!--            android:id="@+id/bottom_sheet_arrow"-->
-<!--            android:layout_width="54dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:src="@drawable/collapse_arrow_40px" />-->
+        <ImageView
+            android:id="@+id/bottom_sheet_arrow"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:src="@drawable/expand_arrow_40px" />
 
-<!--    </LinearLayout>-->
+    </LinearLayout>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/recycablesLayout"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/gesture_layout">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Recycable Objects:"
             android:textColor="@color/black"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:id="@+id/recycablesText"/>
+
+
+
+
+
 
     </RelativeLayout>
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/compostablesLayout"
-        android:layout_marginTop="25dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Compostable Objects:"
-            android:textColor="@color/black"
-            android:layout_margin="10dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/recycablesLayout">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compostable Objects:"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"
+        android:id="@+id/compostablesText" />
+
+
     </RelativeLayout>
 
 
-</LinearLayout>
+
+
+</RelativeLayout>

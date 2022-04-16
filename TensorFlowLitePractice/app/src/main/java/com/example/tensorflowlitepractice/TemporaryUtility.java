@@ -15,6 +15,8 @@ public class TemporaryUtility {
         add("BEER BOTTLE");
         add("CAN");
         add("CARTON");
+        add("BOTTLE");
+        add("CUP");
     }};
 
     public static HashSet<String> compostables = new HashSet<String>(){{
@@ -30,7 +32,7 @@ public class TemporaryUtility {
     public static HashSet<String> currentRecyclables = new HashSet<String>();
     public static HashSet<String> currentCompostables = new HashSet<String>();
 
-    public static Bitmap image;
-    public static int recycablesCount;
-    public static int compostablesCount;
+    public static int recycableCount=1;
+    public static int compostableCount=1;
+
 }
