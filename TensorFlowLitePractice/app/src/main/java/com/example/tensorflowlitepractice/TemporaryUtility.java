@@ -32,4 +32,7 @@ public class TemporaryUtility {
     public static HashSet<String> currentRecyclables = new HashSet<String>();
     public static HashSet<String> currentCompostables = new HashSet<String>();
 
+    public static int recycableCount=1;
+    public static int compostableCount=1;
+
 }

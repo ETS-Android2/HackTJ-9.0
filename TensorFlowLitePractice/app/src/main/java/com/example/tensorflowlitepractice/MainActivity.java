@@ -79,18 +79,18 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<results.size();i++){
             Detection currentDetection = results.get(i);
             String category = currentDetection.getCategories().get(0).getLabel().toUpperCase();
-            if(recycablesNumber>3 && compostablesNumber > 3){
+            if(recycablesNumber>=TemporaryUtility.compostableCount && compostablesNumber >= TemporaryUtility.recycableCount){
                 return;
             }
             if(TemporaryUtility.recycables.contains(category)){
-                if(recycablesNumber<3){
+                if(recycablesNumber<TemporaryUtility.recycableCount){
                     TemporaryUtility.currentRecyclables.add(category);
                     recycablesNumber++;
                     Log.w("CATEGORY", category);
                 }
             }
             if(TemporaryUtility.compostables.contains(category)){
-                if(compostablesNumber<3){
+                if(compostablesNumber<TemporaryUtility.compostableCount){
                     TemporaryUtility.currentCompostables.add(category);
                     compostablesNumber++;
                     Log.w("CATEGORY", category);
