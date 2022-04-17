@@ -18,6 +18,7 @@ import org.tensorflow.lite.task.vision.detector.Detection;
 import org.tensorflow.lite.task.vision.detector.ObjectDetector;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -26,6 +27,7 @@ import android.content.pm.PackageManager;
 import android.provider.MediaStore;
 import android.widget.Button;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,12 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         // Initialization
-
         sharedPreferences=getSharedPreferences(SettingsController.SHARED_PREFERENCES_FILE, 0);
 
+        setDetectAmount();
         options = ObjectDetector.ObjectDetectorOptions.builder()
                 .setBaseOptions(BaseOptions.builder().build())
                 .setMaxResults(6)
@@ -58,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.CAMERA}, 101);
         }
+
 
     }
 
@@ -128,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
     public void captureEnvironment(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, 101);
+        TemporaryUtility.currentRecyclables = new HashSet<String>();
+         TemporaryUtility.currentCompostables = new HashSet<String>();
     }
 
     @Override
@@ -161,5 +168,6 @@ public class MainActivity extends AppCompatActivity {
     public void openSettings(View view) {
         Intent intent =new Intent(this, SettingsController.class);
         startActivity(intent);
+        //recreate();
     }
 }

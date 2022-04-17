@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import static android.content.SharedPreferences.*;
 
@@ -22,8 +23,11 @@ public class SettingsController extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
 
         recycleText = findViewById(R.id.recycableAmount);
         compostText=findViewById(R.id.compostableAmount);

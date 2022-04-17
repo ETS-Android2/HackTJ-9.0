@@ -11,12 +11,9 @@ public class TemporaryUtility {
     public static HashSet<String> recycables = new HashSet<String>(){{
         add("PAPER");
         add("CARDBOARD");
-        add("WATER BOTTLE");
-        add("BEER BOTTLE");
         add("CAN");
         add("CARTON");
         add("BOTTLE");
-        add("CUP");
     }};
 
     public static HashSet<String> compostables = new HashSet<String>(){{
@@ -44,5 +41,7 @@ public class TemporaryUtility {
 
     public static int recycableCount=1;
     public static int compostableCount=1;
+
+    public static String currentObject;
 
 }
