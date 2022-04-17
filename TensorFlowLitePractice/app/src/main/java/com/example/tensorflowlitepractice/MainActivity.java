@@ -2,12 +2,15 @@ package com.example.tensorflowlitepractice;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import org.tensorflow.lite.support.image.TensorImage;
 import org.tensorflow.lite.task.core.BaseOptions;
@@ -33,11 +36,15 @@ public class MainActivity extends AppCompatActivity {
     private Button cameraButton;
     private ImageView imageView;
 
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         // Initialization
+
+        sharedPreferences=getSharedPreferences(SettingsController.SHARED_PREFERENCES_FILE, 0);
 
         options = ObjectDetector.ObjectDetectorOptions.builder()
                 .setBaseOptions(BaseOptions.builder().build())
@@ -51,6 +58,15 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.CAMERA}, 101);
         }
+
+    }
+
+    public void setDetectAmount(){
+        int recycleAmount=sharedPreferences.getInt("RecycleAmount",1);
+        int compostAmount=sharedPreferences.getInt("CompostAmount", 1);
+
+        TemporaryUtility.recycableCount=recycleAmount;
+        TemporaryUtility.compostableCount = compostAmount;
     }
 
     public Bitmap convertToBitmap(){
@@ -112,6 +128,12 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 101) {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(bitmap);
+
+            if(findViewById(R.id.info)!=null){
+                TextView info=findViewById(R.id.info);
+                ((ViewGroup)info.getParent()).removeView(info);
+            }
+
         }
         detectObjects();
     }
@@ -126,5 +148,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, ""+e.toString(), Toast.LENGTH_LONG).show();
             Log.e("ERROR", e.toString());
         }
+    }
+
+    public void openSettings(View view) {
+        Intent intent =new Intent(this, SettingsController.class);
+        startActivity(intent);
     }
 }

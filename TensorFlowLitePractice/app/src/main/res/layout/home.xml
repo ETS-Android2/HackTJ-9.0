@@ -7,18 +7,6 @@
     android:id="@+id/imageLayout"
     android:background="@drawable/custom_border">
 
-
-    <Button
-        android:id="@+id/cameraButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="captureEnvironment"
-        android:text="Capture"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="10dp" />
-
     <ImageView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -48,5 +36,46 @@
             android:src="@drawable/collapse_arrow_40px" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/cameraButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="captureEnvironment"
+            android:text="Capture"
+            tools:layout_editor_absoluteY="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/coda"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/cameraButton"
+            android:text="Settings"
+            app:layout_editor_absoluteY="10dp"
+            android:onClick="openSettings"
+            android:textSize="13sp"
+            android:fontFamily="@font/coda"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CAPTURE YOUR ENVIRONMENT"
+        app:layout_constraintBottom_toBottomOf="@+id/gesture_layout"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="italic"
+        android:textSize="17sp"
+        android:id="@+id/info"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

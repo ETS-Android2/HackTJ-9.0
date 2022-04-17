@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -40,10 +41,10 @@ public class HandleResults extends Activity {
                 params.addRule(RelativeLayout.BELOW, R.id.recycablesText);
                 TextView text = new TextView(this);
                 text.setText("No Recyclable Objects Present");
+                text.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
                 text.setLayoutParams(params);
                 recyclableLayout.addView(text);
             }
-
             for(String recyclable : TemporaryUtility.currentRecyclables){
                 if(previousID==-1){
                     params.addRule(RelativeLayout.BELOW, R.id.recycablesText);
@@ -51,23 +52,20 @@ public class HandleResults extends Activity {
                 else{
                     params.addRule(RelativeLayout.BELOW, previousID);
                 }
-
                 int viewID = View.generateViewId();
-
                 Button btn = new Button(this);
                 btn.setText(recyclable);
                 btn.setId(viewID);
                 btn.setLayoutParams(params);
                 btn.setOnClickListener(this::onClickResult);
+                btn.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
                 recyclableLayout.addView(btn);
-
                 previousID = viewID;
             }
         }
         catch(Exception e){
             Log.e("ERROR", e.toString());
         }
-
     }
 
     public void populateCompostables(){
@@ -79,6 +77,7 @@ public class HandleResults extends Activity {
                 params.addRule(RelativeLayout.BELOW, R.id.compostablesText);
                 TextView text = new TextView(this);
                 text.setText("No Compostable Objects Present");
+                text.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
                 text.setLayoutParams(params);
                 compostableLayout.addView(text);
             }
@@ -98,6 +97,7 @@ public class HandleResults extends Activity {
                 btn.setId(viewID);
                 btn.setLayoutParams(params);
                 btn.setOnClickListener(this::onClickResult);
+                btn.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
                 compostableLayout.addView(btn);
 
                 previousID = viewID;

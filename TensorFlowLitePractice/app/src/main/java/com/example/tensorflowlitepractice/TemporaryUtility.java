@@ -27,6 +27,12 @@ public class TemporaryUtility {
         add("APPLE");
         add("BANANA");
         add("BROCCOLI");
+        add("ORANGE");
+        add("LEMON");
+        add("STRAWBERRY");
+        add("CAULIFLOWER");
+        add("ZUCCHINI");
+        add("CUCUMBER");
     }};
 
     public static HashSet<String> currentRecyclables = new HashSet<String>();
