@@ -102,18 +102,26 @@ public class MainActivity extends AppCompatActivity {
                 if(recycablesNumber<TemporaryUtility.recycableCount){
                     TemporaryUtility.currentRecyclables.add(category);
                     recycablesNumber++;
-                    Log.w("CATEGORY", category);
                 }
             }
             if(TemporaryUtility.compostables.contains(category)){
                 if(compostablesNumber<TemporaryUtility.compostableCount){
                     TemporaryUtility.currentCompostables.add(category);
                     compostablesNumber++;
-                    Log.w("CATEGORY", category);
                 }
             }
-            Log.i("CATEGORY", category);
-
+            if(TemporaryUtility.veggies.contains(category)){
+                if(compostablesNumber<TemporaryUtility.compostableCount){
+                    TemporaryUtility.currentCompostables.add("VEGETABLE");
+                    compostablesNumber++;
+                }
+            }
+            if(TemporaryUtility.fruits.contains(category)){
+                if(compostablesNumber<TemporaryUtility.compostableCount){
+                    TemporaryUtility.currentCompostables.add("FRUIT");
+                    compostablesNumber++;
+                }
+            }
         }
     }
 

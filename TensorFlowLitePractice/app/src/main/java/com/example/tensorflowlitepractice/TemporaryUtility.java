@@ -22,18 +22,22 @@ public class TemporaryUtility {
     public static HashSet<String> compostables = new HashSet<String>(){{
         add("PAPER");
         add("CARDBOARD");
-        add("VEGETABLE");
-        add("FRUIT");
-        add("APPLE");
-        add("BANANA");
-        add("BROCCOLI");
-        add("ORANGE");
-        add("LEMON");
-        add("STRAWBERRY");
+    }};
+
+    public static HashSet<String> veggies = new HashSet<String>(){{
         add("CAULIFLOWER");
         add("ZUCCHINI");
         add("CUCUMBER");
+        add("BROCCOLI");
     }};
+
+    public static HashSet<String> fruits = new HashSet<String>(){{
+        add("APPLE");
+        add("BANANA");
+        add("ORANGE");
+        add("LEMON");
+        add("STRAWBERRY");
+;    }};
 
     public static HashSet<String> currentRecyclables = new HashSet<String>();
     public static HashSet<String> currentCompostables = new HashSet<String>();

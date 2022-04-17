@@ -7,6 +7,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ public class HandleResults extends Activity {
     public RelativeLayout recyclableLayout;
     public RelativeLayout compostableLayout;
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +31,8 @@ public class HandleResults extends Activity {
 
         populateRecyclables();
         populateCompostables();
+
+
     }
 
 
@@ -109,7 +114,8 @@ public class HandleResults extends Activity {
     }
 
     public void onClickResult(View view){
-
+        Intent intent=new Intent(this, ObjectDescription.class);
+        startActivity(intent);
     }
 
     public void returnHome(View view) {
